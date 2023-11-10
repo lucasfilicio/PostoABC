@@ -1,0 +1,44 @@
+object FPrincipal: TFPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Posto ABC'
+  ClientHeight = 421
+  ClientWidth = 584
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = Menus
+  Position = poScreenCenter
+  TextHeight = 13
+  object Menus: TMainMenu
+    Left = 24
+    Top = 16
+    object MCadastro: TMenuItem
+      Caption = 'Cadastro'
+      object mTanque: TMenuItem
+        Caption = 'Tanque'
+        OnClick = mTanqueClick
+      end
+      object mBomba: TMenuItem
+        Caption = 'Bomba'
+        OnClick = mBombaClick
+      end
+    end
+    object MFaturamento: TMenuItem
+      Caption = 'Faturamento'
+      object mAbastecidas: TMenuItem
+        Caption = 'Abastecidas'
+        OnClick = mAbastecidasClick
+      end
+    end
+    object MRelatorio: TMenuItem
+      Caption = 'Relat'#243'rio'
+      object mAbastecimento: TMenuItem
+        Caption = 'Abastecimento'
+      end
+    end
+  end
+end

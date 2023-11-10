@@ -1,0 +1,112 @@
+object FTanque: TFTanque
+  Left = 0
+  Top = 0
+  Caption = 'Tanque'
+  ClientHeight = 441
+  ClientWidth = 264
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poScreenCenter
+  TextHeight = 15
+  object lblNome: TLabel
+    Left = 19
+    Top = 46
+    Width = 33
+    Height = 15
+    Caption = 'Nome'
+  end
+  object lblCodigo: TLabel
+    Left = 13
+    Top = 16
+    Width = 39
+    Height = 15
+    Caption = 'Codigo'
+  end
+  object lblTanque: TLabel
+    Left = 103
+    Top = 16
+    Width = 38
+    Height = 15
+    Caption = 'Tanque'
+  end
+  object DBEdit1: TDBEdit
+    Left = 58
+    Top = 43
+    Width = 165
+    Height = 23
+    DataField = 'DS_TANQUE'
+    DataSource = TDataSource
+    MaxLength = 20
+    TabOrder = 0
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 8
+    Top = 72
+    Width = 224
+    Height = 25
+    DataSource = TDataSource
+    VisibleButtons = [nbFirst, nbNext, nbInsert, nbDelete, nbPost, nbCancel, nbRefresh]
+    TabOrder = 1
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 103
+    Width = 256
+    Height = 338
+    DataSource = TDataSource
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+  end
+  object DBEdit2: TDBEdit
+    Left = 58
+    Top = 14
+    Width = 39
+    Height = 23
+    DataField = 'ID'
+    DataSource = TDataSource
+    TabOrder = 3
+  end
+  object cbTanque: TDBComboBox
+    Left = 147
+    Top = 14
+    Width = 77
+    Height = 23
+    DataField = 'TP_TANQUE'
+    DataSource = TDataSource
+    Items.Strings = (
+      'Gasolina'
+      #211'leo Diesel')
+    TabOrder = 4
+  end
+  object TDataSource: TDataSource
+    DataSet = TTable
+    Left = 96
+    Top = 254
+  end
+  object TConexao: TFDConnection
+    Params.Strings = (
+      'Database=C:\Users\Vilma\Desktop\PostoABC\posto.sqlite3'
+      'LockingMode=Normal'
+      'DriverID=SQLite')
+    Connected = True
+    Left = 56
+    Top = 270
+  end
+  object TTable: TFDTable
+    Active = True
+    IndexFieldNames = 'ID'
+    Connection = TConexao
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    TableName = 'TANQUE'
+    Left = 56
+    Top = 318
+  end
+end

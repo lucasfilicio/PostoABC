@@ -1,0 +1,89 @@
+unit Tanque;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
+  FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.VCLUI.Wait, FireDAC.Stan.Param,
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Vcl.StdCtrls, Vcl.DBCtrls,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ExtCtrls, Vcl.Buttons, Vcl.Mask, Datasnap.DBClient;
+
+type
+  TFTanque = class(TForm)
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    DBNavigator1: TDBNavigator;
+    DBGrid1: TDBGrid;
+    DBComboBox1: TDBComboBox;
+    TTable: TFDTable;
+    TConexao: TFDConnection;
+    TDataSource: TDataSource;
+    ClientDataSet1: TClientDataSet;
+    procedure FormCreate(Sender: TObject);
+    procedure PreencherComboBox;
+    procedure DBComboBox1Change(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FTanque: TFTanque;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFTanque.DBComboBox1Change(Sender: TObject);
+var
+  IDSelecionado: Integer;
+begin
+  // Extrair o ID da string formatada no ComboBox
+  IDSelecionado := StrToIntDef(
+    Copy(DBComboBox1.Items[DBComboBox1.ItemIndex], 1, Pos(' - ', DBComboBox1.Items[DBComboBox1.ItemIndex]) - 1),0);
+
+  // Fazer algo com o IDSelecionado, como armazenar em uma variável ou usar para Post
+  ShowMessage('ID Selecionado: ' + IntToStr(IDSelecionado));
+end;
+
+procedure TFTanque.FormCreate(Sender: TObject);
+begin
+ClientDataSet1.FieldDefs.Add('ID', ftInteger);
+ClientDataSet1.FieldDefs.Add('Descricao', ftString, 50);
+ClientDataSet1.CreateDataSet;
+// Adicione alguns dados de exemplo
+ClientDataSet1.AppendRecord([1, 'Item 1']);
+ClientDataSet1.AppendRecord([2, 'Item 2']);
+ClientDataSet1.AppendRecord([3, 'Item 3']);
+// Preencher o ComboBox
+PreencherComboBox;
+end;
+
+procedure TFTanque.FormDestroy(Sender: TObject);
+begin
+  ClientDataSet1.Free;
+end;
+
+procedure TFTanque.PreencherComboBox;
+begin
+  ClientDataSet1.First;
+  while not ClientDataSet1.Eof do
+  begin
+    DBComboBox1.Items.Add(
+      Format('%s - %s', [
+        ClientDataSet1.FieldByName('ID').AsString,
+        ClientDataSet1.FieldByName('Descricao').AsString
+      ])
+    );
+
+    ClientDataSet1.Next;
+  end;
+end;
+end.

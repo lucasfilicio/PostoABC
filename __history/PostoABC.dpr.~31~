@@ -1,0 +1,18 @@
+program PostoABC;
+
+uses
+  Vcl.Forms,
+  Principal in 'View\Principal.pas' {FPrincipal},
+  Tanque in 'View\Tanque.pas' {FTanque},
+  Bomba in 'View\Bomba.pas' {FBomba};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFPrincipal, FPrincipal);
+  Application.CreateForm(TFTanque, FTanque);
+  Application.CreateForm(TFBomba, FBomba);
+  Application.Run;
+end.
