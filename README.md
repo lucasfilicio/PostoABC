@@ -1,5 +1,4 @@
 # Controle de Abastecimentos.
-- POO;
 - Boas Práticas.
 
 # Ambiente
@@ -10,3 +9,6 @@
 - Tanques;
 - Bombas;
 - Abastecimentos.
+
+# Máquina de Dev
+- Super máquina - Dell vostro 1320 - Duo Core 
