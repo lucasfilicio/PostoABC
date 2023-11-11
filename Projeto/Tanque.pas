@@ -15,17 +15,17 @@ uses
 
 type
   TFTanque = class(TForm)
+    lblNome: TLabel;
+    lblTanque: TLabel;
+    DS_TANQUE: TDBEdit;
+    DBNavigator1: TDBNavigator;
+    DBGrid1: TDBGrid;
+    cbTanque: TDBComboBox;
     TDataSource: TDataSource;
     TConexao: TFDConnection;
     TTable: TFDTable;
-    lblNome: TLabel;
-    lblCodigo: TLabel;
-    lblTanque: TLabel;
-    DBEdit1: TDBEdit;
-    DBNavigator1: TDBNavigator;
-    DBGrid1: TDBGrid;
-    DBEdit2: TDBEdit;
-    cbTanque: TDBComboBox;
+    procedure TTableBeforePost(DataSet: TDataSet);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,9 +34,31 @@ type
 
 var
   FTanque: TFTanque;
+  MAX_ID : Integer;
 
 implementation
 
 {$R *.dfm}
+
+procedure TFTanque.FormCreate(Sender: TObject);
+begin
+TTable.First;
+while not TTable.Eof do
+begin
+    if MAX_ID < TTable.FieldByName('ID').Value  then
+       MAX_ID :=    TTable.FieldByName('ID').Value;
+    TTable.Next;
+end;
+end;
+
+procedure TFTanque.TTableBeforePost(DataSet: TDataSet);
+begin
+if TTable.State in [dsInsert] then
+  TTable.FieldByName('ID').Value := MAX_ID+1;
+if TTable.FieldByName('DS_COMBUSTIVEL').Value = 'Gasolina' then
+  TTable.FieldByName('TP_COMBUSTIVEL').Value := 1
+else
+  TTable.FieldByName('TP_COMBUSTIVEL').Value := 2;
+end;
 
 end.

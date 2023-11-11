@@ -3,7 +3,7 @@ object FBomba: TFBomba
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Bomba'
-  ClientHeight = 424
+  ClientHeight = 441
   ClientWidth = 394
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,69 +16,80 @@ object FBomba: TFBomba
   TextHeight = 15
   object lblNome: TLabel
     Left = 43
-    Top = 40
+    Top = 24
     Width = 33
     Height = 15
     Caption = 'Nome'
   end
-  object lblCodigo: TLabel
-    Left = 37
-    Top = 10
-    Width = 39
-    Height = 15
-    Caption = 'Codigo'
-  end
   object lblTanque: TLabel
-    Left = 151
-    Top = 10
+    Left = 199
+    Top = 23
     Width = 38
     Height = 15
     Caption = 'Tanque'
   end
-  object DBEdit1: TDBEdit
-    Left = 83
-    Top = 37
-    Width = 214
+  object DS_BOMBA: TDBEdit
+    Left = 82
+    Top = 21
+    Width = 103
     Height = 23
     DataField = 'DS_BOMBA'
     DataSource = TDataSource
     MaxLength = 20
-    TabOrder = 0
+    TabOrder = 1
   end
   object DBNavigator1: TDBNavigator
     Left = 73
-    Top = 66
-    Width = 224
+    Top = 50
+    Width = 210
     Height = 25
     DataSource = TDataSource
-    VisibleButtons = [nbFirst, nbNext, nbInsert, nbDelete, nbPost, nbCancel, nbRefresh]
-    TabOrder = 1
+    VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbPost, nbCancel, nbRefresh]
+    TabOrder = 2
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 97
+    Top = 81
     Width = 393
-    Height = 330
+    Height = 352
     DataSource = TDataSource
-    TabOrder = 2
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -12
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = []
-  end
-  object DBEdit2: TDBEdit
-    Left = 83
-    Top = 8
-    Width = 38
-    Height = 23
-    DataField = 'ID'
-    DataSource = TDataSource
-    TabOrder = 3
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Title.Caption = 'C'#243'digo'
+        Width = 49
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DS_BOMBA'
+        Title.Caption = 'Descri'#231#227'o Bomba'
+        Width = 207
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ID_TANQUE'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DS_TANQUE'
+        Title.Caption = 'Combust'#237'vel'
+        Width = 94
+        Visible = True
+      end>
   end
   object cbTanque: TDBComboBox
-    Left = 195
-    Top = 8
+    Left = 243
+    Top = 21
     Width = 102
     Height = 23
     DataField = 'DS_TANQUE'
@@ -86,7 +97,7 @@ object FBomba: TFBomba
     Items.Strings = (
       'Gasolina'
       #211'leo Diesel')
-    TabOrder = 4
+    TabOrder = 0
     OnChange = cbTanqueChange
   end
   object TDataSource: TDataSource

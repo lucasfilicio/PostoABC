@@ -12,81 +12,96 @@ object FTanque: TFTanque
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnCreate = FormCreate
   TextHeight = 15
   object lblNome: TLabel
-    Left = 43
-    Top = 40
+    Left = 171
+    Top = 20
     Width = 33
     Height = 15
     Caption = 'Nome'
   end
-  object lblCodigo: TLabel
-    Left = 37
-    Top = 10
-    Width = 39
-    Height = 15
-    Caption = 'Codigo'
-  end
   object lblTanque: TLabel
-    Left = 151
-    Top = 10
+    Left = 14
+    Top = 21
     Width = 38
     Height = 15
     Caption = 'Tanque'
   end
-  object DBEdit1: TDBEdit
-    Left = 83
-    Top = 37
-    Width = 214
+  object DS_TANQUE: TDBEdit
+    Left = 210
+    Top = 19
+    Width = 168
     Height = 23
+    DataField = 'DS_TANQUE'
     DataSource = TDataSource
-    MaxLength = 20
-    TabOrder = 0
+    TabOrder = 1
   end
   object DBNavigator1: TDBNavigator
     Left = 73
-    Top = 66
-    Width = 224
+    Top = 48
+    Width = 210
     Height = 25
-    VisibleButtons = [nbFirst, nbNext, nbInsert, nbDelete, nbPost, nbCancel, nbRefresh]
-    TabOrder = 1
+    DataSource = TDataSource
+    VisibleButtons = [nbPrior, nbNext, nbInsert, nbDelete, nbPost, nbCancel, nbRefresh]
+    TabOrder = 2
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 97
+    Top = 83
     Width = 393
-    Height = 330
+    Height = 349
     DataSource = TDataSource
-    TabOrder = 2
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -12
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = []
-  end
-  object DBEdit2: TDBEdit
-    Left = 83
-    Top = 8
-    Width = 38
-    Height = 23
-    DataSource = TDataSource
-    TabOrder = 3
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Title.Caption = 'C'#243'digo'
+        Width = 43
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DS_TANQUE'
+        Title.Caption = 'Descri'#231#227'o Tanque'
+        Width = 222
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TP_TANQUE'
+        Title.Caption = 'Combust'#237'vel'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DS_COMBUSTIVEL'
+        Title.Caption = 'Combust'#237'vel'
+        Visible = True
+      end>
   end
   object cbTanque: TDBComboBox
-    Left = 195
-    Top = 8
+    Left = 58
+    Top = 19
     Width = 102
     Height = 23
+    DataField = 'DS_COMBUSTIVEL'
     DataSource = TDataSource
     Items.Strings = (
       'Gasolina'
       #211'leo Diesel')
-    TabOrder = 4
+    TabOrder = 0
   end
   object TDataSource: TDataSource
     DataSet = TTable
-    Left = 96
-    Top = 254
+    Left = 304
+    Top = 144
   end
   object TConexao: TFDConnection
     Params.Strings = (
@@ -94,15 +109,17 @@ object FTanque: TFTanque
       'LockingMode=Normal'
       'DriverID=SQLite')
     Connected = True
-    Left = 56
-    Top = 270
+    Left = 304
+    Top = 192
   end
   object TTable: TFDTable
+    Active = True
+    BeforePost = TTableBeforePost
     IndexFieldNames = 'ID'
     Connection = TConexao
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'TANQUE'
-    Left = 56
-    Top = 318
+    Left = 304
+    Top = 240
   end
 end
