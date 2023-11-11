@@ -1,5 +1,4 @@
 # Controle de Abastecimentos.
-- Boas Práticas.
 
 # Ambiente
 - Delphi Community 12 - ferramentas nativas da linguagem;
