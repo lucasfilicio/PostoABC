@@ -115,6 +115,10 @@
             <Form>FAbastecimento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Projeto\Relatorio.pas">
+            <Form>FRelatorio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

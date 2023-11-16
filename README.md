@@ -12,3 +12,8 @@
 
 # Máquina de Dev
 - Super máquina - Dell vostro 1320 - Duo Core 
+
+
+# Imagens do Projeto
+![Principal](https://github.com/lucasfilicio/PostoABC/blob/main/Imagens/fundo.jpg)
+

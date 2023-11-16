@@ -4422,6 +4422,7 @@ object FPrincipal: TFPrincipal
       Caption = 'Relat'#243'rio'
       object mAbastecimento: TMenuItem
         Caption = 'Abastecimento'
+        OnClick = mAbastecimentoClick
       end
     end
   end

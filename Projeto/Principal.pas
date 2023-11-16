@@ -25,6 +25,7 @@ type
     procedure mTanqueClick(Sender: TObject);
     procedure mBombaClick(Sender: TObject);
     procedure mAbastecidasClick(Sender: TObject);
+    procedure mAbastecimentoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,12 +39,18 @@ implementation
 
 {$R *.dfm}
 
-uses Tanque,Bomba,Abastecimento;
+uses Tanque,Bomba,Abastecimento, Relatorio;
 
 procedure TFPrincipal.mAbastecidasClick(Sender: TObject);
 begin
   Application.CreateForm(TFAbastecimento, FAbastecimento);
   FAbastecimento.Show();
+end;
+
+procedure TFPrincipal.mAbastecimentoClick(Sender: TObject);
+begin
+  Application.CreateForm(TFRelatorio, FRelatorio);
+  FRelatorio.Show();
 end;
 
 procedure TFPrincipal.mBombaClick(Sender: TObject);

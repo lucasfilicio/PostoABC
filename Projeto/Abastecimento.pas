@@ -60,14 +60,11 @@ procedure TFAbastecimento.dbVL_LITROExit(Sender: TObject);
 begin
 TTable.FieldByName('VL_TOTAL').Value := TTable.FieldByName('VL_LITRO').Value * TTable.FieldByName('NR_LITRO').Value;
 TTable.FieldByName('VL_IMPOSTO').Value := TTable.FieldByName('VL_TOTAL').Value * IMPOSTO;
+
 end;
 
 procedure TFAbastecimento.FormCreate(Sender: TObject);
-//var
-//  i : Integer;
 begin
-//for i := 0 to Bomba.BombaList.Count -1 do
-//  dbBomba.Items.Add(Bomba.BombaList[i]);
 TTable.First;
 while not TTable.Eof do
 begin
