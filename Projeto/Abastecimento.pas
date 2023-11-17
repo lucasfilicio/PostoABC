@@ -30,11 +30,13 @@ type
     dbVL_LITRO: TDBEdit;
     Label5: TLabel;
     Label6: TLabel;
+    Button1: TButton;
     procedure TTableAfterPost(DataSet: TDataSet);
     procedure dbNR_LITROSExit(Sender: TObject);
     procedure dbVL_LITROExit(Sender: TObject);
     procedure TTableBeforePost(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +51,14 @@ implementation
 
 {$R *.dfm}
 uses
-    Bomba;
+    Bomba,Relatorio;
+
+procedure TFAbastecimento.Button1Click(Sender: TObject);
+begin
+  Application.CreateForm(TFRelatorio, FRelatorio);
+  FRelatorio.RLReport1.Preview();
+end;
+
 procedure TFAbastecimento.dbNR_LITROSExit(Sender: TObject);
 begin
 TTable.FieldByName('VL_TOTAL').Value := TTable.FieldByName('VL_LITRO').Value * TTable.FieldByName('NR_LITRO').Value;

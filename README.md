@@ -14,5 +14,6 @@
 
 
 # Imagens do Projeto
-![Principal](https://github.com/lucasfilicio/PostoABC/blob/main/Imagens/fundo.jpg)
+Principal
+![Principal](https://github.com/lucasfilicio/PostoABC/blob/main/Imagens/principal.png)
 

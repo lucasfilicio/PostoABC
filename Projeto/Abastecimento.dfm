@@ -158,6 +158,15 @@ object FAbastecimento: TFAbastecimento
     TabOrder = 2
     OnExit = dbVL_LITROExit
   end
+  object Button1: TButton
+    Left = 392
+    Top = 46
+    Width = 89
+    Height = 25
+    Caption = 'Gerar Relat'#243'rio '
+    TabOrder = 6
+    OnClick = Button1Click
+  end
   object TDataSource: TDataSource
     DataSet = TTable
     Left = 328
